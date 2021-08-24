@@ -21,6 +21,7 @@ class App extends React.Component {
 
   handleChange(event) {
     const { name, value, title, id } = event.target
+    console.log(event.target)
     if (name === "education" || name === "practical") {
       let items = (name === "education" ? [...this.state.education] : [...this.state.practical])
       let item = items[id]
@@ -30,6 +31,7 @@ class App extends React.Component {
     } else {
       this.setState({ [name]: value })
     }
+    console.log(this.state.education)
   }
 
   addComponent(event) {
@@ -40,26 +42,42 @@ class App extends React.Component {
     let items = (name === "education") ? [...this.state.education] : [...this.state.practical]
     let item = (name === "education") ? educationItem : practicalItem
     items = items.concat(item)
-    this.setState({
-      [name]: items
-    })
+    this.setState({ [name]: items })
+    console.log(this.state.education)
   }
 
-  
+  removeComponent() {
+
+  }
+
+
   render() {
-    //let id = this.state.education.length-1
     return (
       <main>
         <header><h1>Resume Builder</h1></header>
         <form>
           <General handleChange={this.handleChange} data={this.state} />
           <h2>Education Experience</h2>
-          <EducationExperience handleChange={this.handleChange} addComponent={this.addComponent} data={this.state} id="0" />
-         
+          {this.state.education.map((item, index) => {
+            return (
+              <EducationExperience
+                handleChange={item.handleChange}
+                data={item.state} id={index}
+                key={Math.floor(Math.random() * 1000)} />
+            )
+          })}
           <button name="education" title="add" onClick={this.addComponent} >Add</button>
+          <br />
+          <br />
           <h2>Practical Experience</h2>
-      
-          <PracticalExperience handleChange={this.handleChange} addComponent={this.addComponent} data={this.state} id="0" />
+          {this.state.practical.map((item, index) => {
+            return (
+              <PracticalExperience
+                handleChange={this.handleChange}
+                data={this.state} id={index}
+                key={Math.floor(Math.random() * 1000)} />
+            )
+          })}
           <button onClick={this.addComponent} name="practical" title="add">Add</button>
           <br />
           <br />

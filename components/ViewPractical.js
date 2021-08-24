@@ -5,11 +5,13 @@ function ViewPractical(props) {
     return (
         <div>
             <div style={{display:"flex"}}>
-            <h4 className="practical"> {data.position} </h4>
-            <h4 className="practical" >({data.fromYear} - {data.toYear})</h4>
+            <h4> {data.position} </h4>
+            <h4 
+            style={{display: data.fromYear? "block":null }}>
+                ({data.fromYear} - {data.toYear})</h4>
             </div>
-            <p className="practical" >{data.company}</p>
-            <p className="practical">{data.description}</p>
+            <p >{data.company}</p>
+            <p>{data.description}</p>
            
         </div>
     )
