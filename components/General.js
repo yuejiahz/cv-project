@@ -9,7 +9,8 @@ function General(props) {
         <input 
         type="text" 
         name="firstName" 
-        onChange={props.handleChange} />
+        onChange={props.handleChange}
+        value={props.data.firstName}/>
       </div>
       <br />
       <div>
@@ -18,7 +19,7 @@ function General(props) {
         type="text" 
         name="lastName" 
         onChange={props.handleChange} 
-        value={props.firstName}/>
+        value={props.data.lastName}/>
       </div>
       <br />
       <div>
@@ -27,7 +28,7 @@ function General(props) {
         type="email" 
         name="email" 
         onChange={props.handleChange} 
-        value={props.lastName}/>
+        value={props.data.email}/>
       </div>
       <br />
       <div>
@@ -36,7 +37,7 @@ function General(props) {
         type="text" 
         name="phoneNum" 
         onChange={props.handleChange} 
-        value={props.phoneNum} />
+        value={props.data.phoneNum} />
       </div>
       <br />
     </div>

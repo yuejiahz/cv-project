@@ -1,7 +1,7 @@
 import React from 'react';
 
 function EducationExperience(props) {
-
+console.log(props)
     return (
         <div>
             <hr />
@@ -12,7 +12,8 @@ function EducationExperience(props) {
                     name="education"
                     title="course"
                     onChange={props.handleChange}
-                    id={props.id}
+                    id={props.id} 
+                    value={props.data.course}
                 />
             </div>
             <br />
@@ -23,7 +24,8 @@ function EducationExperience(props) {
                     name="education"
                     title="institution"
                     onChange={props.handleChange}
-                    id={props.id}
+                    id={props.id} 
+                    value={props.data.institution}
                 />
             </div>
             <br />
@@ -37,7 +39,9 @@ function EducationExperience(props) {
                     min="1900"
                     max="2021"
                     onChange={props.handleChange}
-                    id={props.id} />
+                    id={props.id} 
+                    value={props.data.fromYear} 
+                    />
                 <label> to </label>
                 <input
                     type="number"
@@ -46,13 +50,16 @@ function EducationExperience(props) {
                     min="1900"
                     max="2021"
                     onChange={props.handleChange}
-                    id={props.id} />
+                    id={props.id}  
+                    value={props.data.toYear}
+                    />
                 <br />
                 <br />
                 <button
                     name="education"
                     title="delete"
-                    id={props.id}>Delete</button>
+                    id={props.id}>
+                        Delete</button>
                 <br />
                 <br />
             </div>

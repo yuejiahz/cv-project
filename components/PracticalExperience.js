@@ -11,7 +11,8 @@ function PracticalExperience(props) {
                     name="practical"
                     id={props.id}
                     title="position"
-                    onChange={props.handleChange} />
+                    onChange={props.handleChange}
+                    value={props.data.position} />
             </div>
             <br />
             <div>
@@ -21,7 +22,8 @@ function PracticalExperience(props) {
                     name="practical"
                     id={props.id}
                     title="companyName"
-                    onChange={props.handleChange} />
+                    onChange={props.handleChange}
+                    value={props.data.companyName} />
             </div>
             <br />
             <div>
@@ -30,7 +32,8 @@ function PracticalExperience(props) {
                     name="practical"
                     id={props.id}
                     title="description"
-                    onChange={props.handleChange} />
+                    onChange={props.handleChange}
+                    value={props.data.description} />
             </div>
             <br />
             <div>
@@ -43,7 +46,8 @@ function PracticalExperience(props) {
                     name="practical"
                     id={props.id}
                     title="fromYear"
-                    onChange={props.handleChange} />
+                    onChange={props.handleChange}
+                    value={props.data.fromYear} />
                 <label> to </label>
                 <input
                     type="number"
@@ -52,7 +56,8 @@ function PracticalExperience(props) {
                     name="practical"
                     id={props.id}
                     title="toYear"
-                    onChange={props.handleChange} />
+                    onChange={props.handleChange}
+                    value={props.data.toYear} />
                 <br />
                 <br />
                 <button

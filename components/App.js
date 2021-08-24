@@ -22,6 +22,7 @@ class App extends React.Component {
   handleChange(event) {
     const { name, value, title, id } = event.target
     console.log(event.target)
+    console.log(this.state.education)
     if (name === "education" || name === "practical") {
       let items = (name === "education" ? [...this.state.education] : [...this.state.practical])
       let item = items[id]
@@ -43,13 +44,11 @@ class App extends React.Component {
     let item = (name === "education") ? educationItem : practicalItem
     items = items.concat(item)
     this.setState({ [name]: items })
-    console.log(this.state.education)
   }
 
   removeComponent() {
 
   }
-
 
   render() {
     return (
@@ -61,8 +60,8 @@ class App extends React.Component {
           {this.state.education.map((item, index) => {
             return (
               <EducationExperience
-                handleChange={item.handleChange}
-                data={item.state} id={index}
+                handleChange={this.handleChange}
+                data={item} id={index}
                 key={Math.floor(Math.random() * 1000)} />
             )
           })}
@@ -74,7 +73,7 @@ class App extends React.Component {
             return (
               <PracticalExperience
                 handleChange={this.handleChange}
-                data={this.state} id={index}
+                data={item} id={index}
                 key={Math.floor(Math.random() * 1000)} />
             )
           })}
