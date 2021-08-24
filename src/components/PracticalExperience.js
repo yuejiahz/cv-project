@@ -3,7 +3,7 @@ import React from 'react';
 function PracticalExperience(props) {
     return (
         <div>
-
+            <hr />
             <div>
                 <label> Position: </label>
                 <input
@@ -60,9 +60,8 @@ function PracticalExperience(props) {
                     name="practical"
                     id={props.id}
                     title="delete">
-                        Delete</button>
+                    Delete</button>
                 <br />
-
             </div>
             <br />
         </div>

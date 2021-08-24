@@ -5,10 +5,10 @@ function ViewEducation(props) {
     return (
         <div>
             <div style={{display:"flex"}}>
-            <h4 className="education">{data.course}</h4>
-            <h4 className="education">({data.fromYear}-{props.data.toYear})</h4>
+            <h4>{data.course}</h4>
+            <h4>({data.fromYear}-{props.data.toYear})</h4>
             </div>
-            <p className="education">{data.institution}</p>
+            <p>{data.institution}</p>
         </div>
     )
 }
