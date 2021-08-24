@@ -1,31 +1,33 @@
-import React from 'react';
+import React from 'react'
 import '../style/View.css'
+import ViewEducation from './ViewEducation'
+import ViewPractical from './ViewPractical'
 
 function View(props) {
+    const { data } = props
+
+    const educationComponents = data.education.map((item) => {
+        return <ViewEducation key={Math.floor(Math.random() * 1000)} data={item} />
+    })
+    const PracticalComponents = data.practical.map((item) => {
+        return <ViewPractical key={Math.floor(Math.random() * 1000)} data={item} />
+    })
 
     return (
         <div className="view-container">
             <header className="resumeHeader">
-                <h1 className="headerTitle">{props.data.firstName} {props.data.lastName}</h1>
-                <h3 className="headerSubtitle">{props.data.email}</h3>
-                <h3 className="headerSubtitle">{props.data.phoneNum}</h3>
+                <h1 className="headerTitle">{data.firstName} {data.lastName}</h1>
+                <h3 className="headerSubtitle">{data.email}</h3>
+                <h3 className="headerSubtitle">{data.phoneNum}</h3>
             </header>
             <div className="content-container">
                 <div className="education-container">
                     <h3>Education Experience</h3>
-                    <h4 className="education">{props.data.course}</h4>
-                    <p className="education">{props.data.institution}</p>
-                    <p className="education">({props.data.fromYear}-{props.data.toYear})</p>
-    
+                    {educationComponents}
                 </div>
-
                 <div className="practical-container">
                     <h3>Practical Experience</h3>
-                    <h4 className="practical">{props.data.position}</h4>
-                    <p className="practical">{props.data.company}</p>
-                    <p className="practical">{props.data.description}</p>
-                    <p className="practical">({props.data.fromYear}-{props.data.toYear})</p>
-    
+                    {PracticalComponents}
                 </div >
             </div>
         </div >

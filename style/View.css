@@ -7,7 +7,7 @@ div.view-container{
 .resumeHeader{
     background-color:rgb(120, 202, 202);
     margin:0;
-    padding: 5px 5px;
+    padding: 15px 5px;
 }
 
 .headerTitle,.headerSubtitle{
@@ -15,5 +15,5 @@ div.view-container{
     text-align: left;  
 }
 .content-container{
-    padding-left: 10%;
+    padding:  3% 10% 10% 10%;
 }
