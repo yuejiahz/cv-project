@@ -1,9 +1,9 @@
 import React from 'react';
-import General from './General';
-import EducationExperience from './EducationExperience'
-import PracticalExperience from './PracticalExperience'
-import View from './View'
-import dummyInput from "./dummyInput"
+import General from './components/General';
+import EducationExperience from './components/EducationExperience'
+import PracticalExperience from './components/PracticalExperience'
+import View from './components/View'
+import dummyInput from "./components/dummyInput"
 
 let { firstName, lastName, email, phoneNum, education, practical } = dummyInput
 
