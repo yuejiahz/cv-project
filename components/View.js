@@ -25,6 +25,8 @@ function View(props) {
                     <h3>Education Experience</h3>
                     {educationComponents}
                 </div>
+                <br/>
+                
                 <div className="practical-container">
                     <h3>Practical Experience</h3>
                     {PracticalComponents}
