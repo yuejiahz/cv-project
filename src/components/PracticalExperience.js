@@ -64,8 +64,10 @@ function PracticalExperience(props) {
                     onClick={props.handleChange}
                     name="practical"
                     id={props.id}
-                    title="delete">
-                    Delete</button>
+                    title="delete"
+                    style={{ display: props.stateData.practical.length === 1 ? "none" : "block" }}>
+                    Delete
+                </button>
                 <br />
             </div>
             <br />

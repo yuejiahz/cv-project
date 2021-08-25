@@ -1,7 +1,6 @@
 import React from 'react';
 
 function EducationExperience(props) {
-console.log(props)
     return (
         <div>
             <hr />
@@ -12,7 +11,7 @@ console.log(props)
                     name="education"
                     title="course"
                     onChange={props.handleChange}
-                    id={props.id} 
+                    id={props.id}
                     value={props.data.course}
                 />
             </div>
@@ -24,7 +23,7 @@ console.log(props)
                     name="education"
                     title="institution"
                     onChange={props.handleChange}
-                    id={props.id} 
+                    id={props.id}
                     value={props.data.institution}
                 />
             </div>
@@ -39,9 +38,9 @@ console.log(props)
                     min="1900"
                     max="2021"
                     onChange={props.handleChange}
-                    id={props.id} 
-                    value={props.data.fromYear} 
-                    />
+                    id={props.id}
+                    value={props.data.fromYear}
+                />
                 <label> to </label>
                 <input
                     type="number"
@@ -50,16 +49,20 @@ console.log(props)
                     min="1900"
                     max="2021"
                     onChange={props.handleChange}
-                    id={props.id}  
+                    id={props.id}
                     value={props.data.toYear}
-                    />
+                />
                 <br />
-                <br />
+
                 <button
                     name="education"
                     title="delete"
-                    id={props.id}>
-                        Delete</button>
+                    id={props.id}
+                    onClick={props.deleteComponent}
+                    style={{ display: props.stateData.education.length === 1 ? "none" : "block" }}
+                >
+                    Delete
+                </button>
                 <br />
                 <br />
             </div>

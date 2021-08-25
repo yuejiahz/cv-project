@@ -3,26 +3,54 @@ import General from './General';
 import EducationExperience from './EducationExperience'
 import PracticalExperience from './PracticalExperience'
 import View from './View'
+import dummyInput from "./dummyInput"
+
+let { firstName, lastName, email, phoneNum, education, practical } = dummyInput
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      firstName: "First",
-      lastName: "Last",
-      email: "hudsan@kkdd.vom",
-      phoneNum: "09-82378422",
-      education: [{ course: "Sejarah", institution: "SJI", fromYear: "1992", toYear: "1998", id: "0" }],
-      practical: [{ position: "Anything", companyName: "DummyCompany", description: "Jobdescrip", fromYear: "1111", toYear: "2222", id: "0" }]
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNum: phoneNum,
+      education: education,
+      practical: practical
     }
     this.handleChange = this.handleChange.bind(this)
     this.addComponent = this.addComponent.bind(this)
+    this.deleteComponent = this.deleteComponent.bind(this)
+    this.reset = this.reset.bind(this)
+  }
+
+  reset(event) {
+    event.preventDefault()
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNum: "",
+      education: [{
+        course: "",
+        institution: "",
+        fromYear: "",
+        toYear: "",
+        id: "0"
+      }],
+      practical: [{
+        position: "",
+        companyName: "",
+        description: "",
+        fromYear: "",
+        toYear: "",
+        id: "0"
+      }]
+    })
   }
 
   handleChange(event) {
     const { name, value, title, id } = event.target
-    console.log(event.target)
-    console.log(this.state.education)
     if (name === "education" || name === "practical") {
       let items = (name === "education" ? [...this.state.education] : [...this.state.practical])
       let item = items[id]
@@ -32,22 +60,43 @@ class App extends React.Component {
     } else {
       this.setState({ [name]: value })
     }
-    console.log(this.state.education)
   }
 
   addComponent(event) {
-    event.preventDefault();
+    event.preventDefault()
     const { name } = event.target
-    let educationItem = { course: "", institution: "", fromYear: "", toYear: "", id: this.state.education.length }
-    let practicalItem = { position: "", companyName: "", description: "", fromYear: "", toYear: "", id: this.state.practical.length }
-    let items = (name === "education") ? [...this.state.education] : [...this.state.practical]
+    let educationItem = {
+      course: "",
+      institution: "",
+      fromYear: "",
+      toYear: "",
+      id: this.state.education.length
+    }
+    let practicalItem = {
+      position: "",
+      companyName: "",
+      description: "",
+      fromYear: "",
+      toYear: "",
+      id: this.state.practical.length
+    }
+    let items = (name === "education") ?
+      [...this.state.education] : [...this.state.practical]
     let item = (name === "education") ? educationItem : practicalItem
     items = items.concat(item)
     this.setState({ [name]: items })
   }
 
-  removeComponent() {
-
+  deleteComponent(event) {
+    event.preventDefault()
+    const { name, id } = event.target
+    let items = (name === "education") ?
+      [...this.state.education] : [...this.state.practical]
+    let newId = Number(id)
+    console.log(newId)
+    const filteredItems = items.filter(item => item.id != newId)
+    console.log(filteredItems)
+    this.setState({ [name]: filteredItems })
   }
 
   render() {
@@ -56,32 +105,38 @@ class App extends React.Component {
         <header><h1>Resume Builder</h1></header>
         <form>
           <General handleChange={this.handleChange} data={this.state} />
+
           <h2>Education Experience</h2>
           {this.state.education.map((item, index) => {
-            return (
-              <EducationExperience
-                handleChange={this.handleChange}
-                data={item} id={index}
-                key={Math.floor(Math.random() * 1000)} />
-            )
+            return <EducationExperience
+              handleChange={this.handleChange}
+              deleteComponent={this.deleteComponent}
+              data={item}
+              stateData={this.state}
+              id={index}
+              key={index} />
           })}
+
           <button name="education" title="add" onClick={this.addComponent} >Add</button>
           <br />
           <br />
+
           <h2>Practical Experience</h2>
           {this.state.practical.map((item, index) => {
             return (
               <PracticalExperience
                 handleChange={this.handleChange}
-                data={item} id={index}
-                key={Math.floor(Math.random() * 1000)} />
+                deleteComponent={this.deleteComponent}
+                data={item}
+                stateData={this.state}
+                id={index}
+                key={index} />
             )
           })}
           <button onClick={this.addComponent} name="practical" title="add">Add</button>
           <br />
           <br />
-          <button>Example Resume</button>
-          <button>Reset</button>
+          <button onClick={this.reset}>Reset</button>
         </form>
         <View data={this.state} />
       </main>
