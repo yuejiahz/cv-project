@@ -12,7 +12,7 @@
 ## Getting started
 
 ```
-git clone https://github.com/michalosman/cv-application.git
+git clone https://github.com/yuejiahz/cv-project.git
 cd cv-application
 npm install
 npm start
