@@ -1,5 +1,7 @@
 # CV Project
 
+[View demo](https://yuejiahz.github.io/cv-project/)
+
 * creates resume from form input
 
 * this project is created to learn react including:
