@@ -1,4 +1,3 @@
-#CV project
 
 * creates resume from form input
 
